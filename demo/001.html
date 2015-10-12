@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <title>tjz-blog</title>
+</head>
+<style>
+span {
+    display: inline-block;
+    background-color: red;
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+.tc{
+    text-align: center;
+}
+input {
+    padding: 10px;
+}
+</style>
+
+<body>
+    <div class="tc">
+        <input id="tap" />
+        <br/>
+        <span id="tapBtn">tapBtn</span>
+        <br/>
+        <span id="touchendBtn">touchendBtn</span>
+        <br/>
+    </div>
+    <ul id="content">
+    </ul>
+</body>
+<script src="./zepto.js"></script>
+<script>
+$(function() {
+    var num = 0;
+    var $tapInput = $('#tap');
+
+    $('#tapBtn').on('tap', function() {
+        $tapInput.focus();
+    })
+
+    $('#touchendBtn').on('touchend', function(e) {
+        $tapInput.focus();
+    })
+
+    $tapInput.on('touchend', function(e) {
+        e.preventDefault();
+        //$(this).focus();
+    })
+    $tapInput.on('tap', function(e) {
+        $(this).focus();
+    })
+
+    $tapInput.on('focus', function() {
+        num++;
+        $('#content').append('<li>' + num + ' : focus happen</li>');
+    })
+})
+</script>
+
+</html>

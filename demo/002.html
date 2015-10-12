@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <title>tjz-blog</title>
+</head>
+<style>
+span {
+    display: inline-block;
+    background-color: red;
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+input {
+    padding: 10px;
+}
+.tc{
+    text-align: center;
+}
+.main{
+    position: relative;
+}
+.btn{
+    position: absolute;
+    left: 10px;
+    top: 0;
+    width: 100px;
+    height: 50px;
+    background: red;
+}
+</style>
+
+<body>
+    <div class="main">
+        <input id="tap" />
+        <div class="btn">点我</div>
+    </div>
+    <ul id="content">
+        </ul>
+</body>
+<script src="./zepto.js"></script>
+<script>
+$(function() {
+    var $tapInput = $('#tap');
+    var $content = $('#content');
+    $('.btn').on('tap', function(){
+        $(this).hide();
+    })
+    $tapInput.on('focus', function(){
+        $content.append('<li>focus happen</li>');
+    })
+})
+</script>
+
+</html>
